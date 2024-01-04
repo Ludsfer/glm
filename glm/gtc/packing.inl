@@ -181,7 +181,7 @@ namespace detail
 
 	union u3u3u2
 	{
-		struct
+		struct Data
 		{
 			uint x : 3;
 			uint y : 3;
@@ -192,7 +192,7 @@ namespace detail
 
 	union u4u4
 	{
-		struct
+		struct Data
 		{
 			uint x : 4;
 			uint y : 4;
@@ -202,7 +202,7 @@ namespace detail
 
 	union u4u4u4u4
 	{
-		struct
+		struct Data
 		{
 			uint x : 4;
 			uint y : 4;
@@ -214,7 +214,7 @@ namespace detail
 
 	union u5u6u5
 	{
-		struct
+		struct Data
 		{
 			uint x : 5;
 			uint y : 6;
@@ -225,7 +225,7 @@ namespace detail
 
 	union u5u5u5u1
 	{
-		struct
+		struct Data
 		{
 			uint x : 5;
 			uint y : 5;
@@ -237,7 +237,7 @@ namespace detail
 
 	union u10u10u10u2
 	{
-		struct
+		struct Data
 		{
 			uint x : 10;
 			uint y : 10;
@@ -249,7 +249,7 @@ namespace detail
 
 	union i10i10i10i2
 	{
-		struct
+		struct Data
 		{
 			int x : 10;
 			int y : 10;
@@ -261,7 +261,7 @@ namespace detail
 
 	union u9u9u9e5
 	{
-		struct
+		struct Data
 		{
 			uint x : 9;
 			uint y : 9;

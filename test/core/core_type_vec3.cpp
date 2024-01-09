@@ -9,11 +9,20 @@
 #include <glm/vec4.hpp>
 #include <vector>
 
+#if GLM_COMPILER & GLM_COMPILER_CLANG
+#	pragma clang diagnostic push
+#	pragma clang diagnostic ignored "-Wglobal-constructors"
+#endif
+
 static glm::vec3 g1;
 static glm::vec3 g2(1);
 static glm::vec3 g3(1, 1, 1);
 
-int test_vec3_ctor()
+#if GLM_COMPILER & GLM_COMPILER_CLANG
+#	pragma clang diagnostic pop
+#endif
+
+static int test_vec3_ctor()
 {
 	int Error = 0;
 
@@ -291,7 +300,7 @@ static int test_vec3_operators()
 	return Error;
 }
 
-int test_vec3_size()
+static int test_vec3_size()
 {
 	int Error = 0;
 	
@@ -314,7 +323,7 @@ int test_vec3_size()
 	return Error;
 }
 
-int test_vec3_swizzle3_2()
+static int test_vec3_swizzle3_2()
 {
 	int Error = 0;
 
@@ -378,7 +387,7 @@ int test_vec3_swizzle3_2()
 	return Error;
 }
 
-int test_vec3_swizzle3_3()
+static int test_vec3_swizzle3_3()
 {
 	int Error = 0;
 
@@ -406,7 +415,7 @@ int test_vec3_swizzle3_3()
 	return Error;
 }
 
-int test_vec3_swizzle_operators()
+static int test_vec3_swizzle_operators()
 {
 	int Error = 0;
 
@@ -448,7 +457,7 @@ int test_vec3_swizzle_operators()
 	return Error;
 }
 
-int test_vec3_swizzle_functions()
+static int test_vec3_swizzle_functions()
 {
 	int Error = 0;
 
@@ -491,7 +500,7 @@ int test_vec3_swizzle_functions()
 	return Error;
 }
 
-int test_vec3_swizzle_partial()
+static int test_vec3_swizzle_partial()
 {
 	int Error = 0;
 

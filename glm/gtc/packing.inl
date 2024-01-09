@@ -179,6 +179,13 @@ namespace detail
 //		return ((floatTo11bit(x) & ((1 << 11) - 1)) << 0) |  ((floatTo11bit(y) & ((1 << 11) - 1)) << 11) | ((floatTo10bit(z) & ((1 << 10) - 1)) << 22);
 //	}
 
+#if GLM_SILENT_WARNINGS == GLM_ENABLE
+#	if defined(__clang__)
+#		pragma clang diagnostic push
+#		pragma clang diagnostic ignored "-Wpadded"
+#	endif
+#endif
+
 	union u3u3u2
 	{
 		struct Data
@@ -234,6 +241,12 @@ namespace detail
 		} data;
 		uint16 pack;
 	};
+
+#if GLM_SILENT_WARNINGS == GLM_ENABLE
+#	if defined(__clang__)
+#		pragma clang diagnostic pop
+#	endif
+#endif
 
 	union u10u10u10u2
 	{

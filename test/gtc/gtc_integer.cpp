@@ -92,6 +92,11 @@ namespace log2_
 
 			std::clock_t Begin = clock();
 
+#if GLM_COMPILER& GLM_COMPILER_VC
+#	pragma warning(push)
+#	pragma warning(disable: 4267)
+#endif
+
 			for(std::size_t i = 0; i < Count; ++i)
 			{
 				glm::vec<4, unsigned long, glm::defaultp> Tmp;
@@ -101,6 +106,10 @@ namespace log2_
 				_BitScanReverse(&Tmp.w, i);
 				Result[i] = glm::ivec4(Tmp);
 			}
+
+#if GLM_COMPILER & GLM_COMPILER_VC
+#	pragma warning(pop)
+#endif
 
 			std::clock_t End = clock();
 
@@ -114,6 +123,11 @@ namespace log2_
 
 			std::clock_t Begin = clock();
 
+#if GLM_COMPILER& GLM_COMPILER_VC
+#	pragma warning(push)
+#	pragma warning(disable: 4267)
+#endif
+
 			for(std::size_t i = 0; i < Count; ++i)
 			{
 				_BitScanReverse(&Result[i].x, i);
@@ -121,6 +135,10 @@ namespace log2_
 				_BitScanReverse(&Result[i].z, i);
 				_BitScanReverse(&Result[i].w, i);
 			}
+
+#if GLM_COMPILER & GLM_COMPILER_VC
+#	pragma warning(pop)
+#endif
 
 			std::clock_t End = clock();
 
@@ -134,6 +152,11 @@ namespace log2_
 
 			std::clock_t Begin = clock();
 
+#if GLM_COMPILER& GLM_COMPILER_VC
+#	pragma warning(push)
+#	pragma warning(disable: 4267)
+#endif
+
 			for(std::size_t i = 0; i < Count; ++i)
 			{
 				_BitScanReverse(reinterpret_cast<unsigned long*>(&Result[i].x), i);
@@ -141,6 +164,10 @@ namespace log2_
 				_BitScanReverse(reinterpret_cast<unsigned long*>(&Result[i].z), i);
 				_BitScanReverse(reinterpret_cast<unsigned long*>(&Result[i].w), i);
 			}
+
+#if GLM_COMPILER & GLM_COMPILER_VC
+#	pragma warning(pop)
+#endif
 
 			std::clock_t End = clock();
 

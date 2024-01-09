@@ -11,9 +11,18 @@
 #include <ctime>
 #include <vector>
 
+#if GLM_COMPILER & GLM_COMPILER_CLANG
+#	pragma clang diagnostic push
+#	pragma clang diagnostic ignored "-Wglobal-constructors"
+#endif
+
 static glm::vec4 g1;
 static glm::vec4 g2(1);
 static glm::vec4 g3(1, 1, 1, 1);
+
+#if GLM_COMPILER & GLM_COMPILER_CLANG
+#	pragma clang diagnostic pop
+#endif
 
 template <int Value>
 struct mask

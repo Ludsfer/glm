@@ -10,9 +10,13 @@
 #include <cmath>
 #include <cfloat>
 
-#if(GLM_COMPILER & GLM_COMPILER_VC)
+#if GLM_COMPILER & GLM_COMPILER_VC
 #	pragma warning(push)
 #	pragma warning(disable : 4127)
+#elif GLM_COMPILER & GLM_COMPILER_CLANG
+#	pragma clang diagnostic push
+#	pragma clang diagnostic ignored "-Wsign-conversion"
+#	pragma clang diagnostic ignored "-Wpadded"
 #endif
 
 typedef union
@@ -182,8 +186,10 @@ namespace detail
 }//namespace detail
 }//namespace glm
 
-#if(GLM_COMPILER & GLM_COMPILER_VC)
+#if GLM_COMPILER & GLM_COMPILER_VC
 #	pragma warning(pop)
+#elif GLM_COMPILER & GLM_COMPILER_CLANG
+#	pragma clang diagnostic pop
 #endif
 
 namespace glm

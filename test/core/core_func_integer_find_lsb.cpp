@@ -285,6 +285,11 @@ void error(int x, int y) {
    std::printf("Error for x = %08x, got %d\n", x, y);
 }
 
+#if defined(_MSC_VER)
+#	pragma warning(push)
+#	pragma warning(disable: 4389)  // nonstandard extension used : nameless struct/union
+#endif
+
 int main()
 {
 #	ifdef NDEBUG
@@ -429,3 +434,8 @@ int main()
 
 #	endif//NDEBUG
 }
+
+#if defined(_MSC_VER)
+#	pragma warning(pop)
+#endif
+

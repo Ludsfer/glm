@@ -83,6 +83,11 @@ L: if (x < 0) return n;
    goto L;
 }
 
+#if GLM_COMPILER & GLM_COMPILER_VC
+#	pragma warning(push)
+#	pragma warning(disable : 4146)
+#endif
+
 int nlz4(unsigned x) {
    int y, m, n;
 
@@ -110,6 +115,10 @@ int nlz4(unsigned x) {
    m = y & ~(y >> 1);   // Set m = 0, 1, 2, or 2 resp.
    return n + 2 - m;
 }
+
+#if(GLM_COMPILER & GLM_COMPILER_VC)
+#	pragma warning(pop)
+#endif
 
 int nlz5(unsigned x) {
    int pop(unsigned x);

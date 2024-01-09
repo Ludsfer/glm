@@ -226,11 +226,12 @@ int test_model()
 	
 	Error += ((sizeof(void*) == 4) && (GLM_MODEL == GLM_MODEL_32)) || ((sizeof(void*) == 8) && (GLM_MODEL == GLM_MODEL_64)) ? 0 : 1;
 	
-	if(GLM_MODEL == GLM_MODEL_32)
+#	if GLM_MODEL == GLM_MODEL_32
 		std::printf("GLM_MODEL_32\n");
-	else if(GLM_MODEL == GLM_MODEL_64)
+#	elif GLM_MODEL == GLM_MODEL_64
 		std::printf("GLM_MODEL_64\n");
-	
+#	endif
+
 	return Error;
 }
 

@@ -138,6 +138,11 @@ execute in only 10 cycles on a machine with sufficient parallelism.
 useful parallelism on most machines (the assignments to y, bz, and b4
 could then all run in parallel). */
 
+#if GLM_COMPILER & GLM_COMPILER_VC
+#	pragma warning(push)
+#	pragma warning(disable : 4146)
+#endif
+
 int ntz7(unsigned x)
 {
 	unsigned y, bz, b4, b3, b2, b1, b0;
@@ -152,9 +157,15 @@ int ntz7(unsigned x)
 	return bz + b4 + b3 + b2 + b1 + b0;
 }
 
+#if(GLM_COMPILER & GLM_COMPILER_VC)
+#	pragma warning(pop)
+#endif
+
 // This file has divisions by zero to test isnan
 #if GLM_COMPILER & GLM_COMPILER_VC
+#	pragma warning(push)
 #	pragma warning(disable : 4800)
+#	pragma warning(disable : 4146)
 #endif
 
 int ntz7_christophe(unsigned x)
@@ -263,6 +274,10 @@ int ntz11 (unsigned int n) {
 #endif
    return n ? tab[k>>27] : 32;
 }
+
+#if(GLM_COMPILER & GLM_COMPILER_VC)
+#	pragma warning(pop)
+#endif
 
 int errors;
 void error(int x, int y) {

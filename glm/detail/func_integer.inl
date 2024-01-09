@@ -274,6 +274,11 @@ namespace detail
 		return (Base & ~Mask) | ((Insert << static_cast<T>(Offset)) & Mask);
 	}
 
+#if GLM_COMPILER & GLM_COMPILER_VC
+#	pragma warning(push)
+#	pragma warning(disable : 4309)
+#endif
+
 	// bitfieldReverse
 	template<typename genIUType>
 	GLM_FUNC_QUALIFIER genIUType bitfieldReverse(genIUType x)
@@ -297,6 +302,10 @@ namespace detail
 		x = detail::compute_bitfieldReverseStep<L, T, Q, detail::is_aligned<Q>::value, sizeof(T) * 8>= 64>::call(x, static_cast<T>(0x00000000FFFFFFFFull), static_cast<T>(32));
 		return x;
 	}
+
+#		if GLM_COMPILER & GLM_COMPILER_VC
+#			pragma warning(pop)
+#		endif
 
 	// bitCount
 	template<typename genIUType>

@@ -134,25 +134,25 @@ namespace mask
 */
 		for(std::size_t i = 0; i < sizeof(Data) / sizeof(type<int>); ++i)
 		{
-			int Result = mask_mix(Data[i].Value);
+			glm::uint Result = static_cast<glm::uint>(mask_mix(Data[i].Value));
 			Error += Data[i].Return == Result ? 0 : 1;
 		}
 
 		for(std::size_t i = 0; i < sizeof(Data) / sizeof(type<int>); ++i)
 		{
-			int Result = mask_half(Data[i].Value);
+			glm::uint  Result = static_cast<glm::uint>(mask_half(Data[i].Value));
 			Error += Data[i].Return == Result ? 0 : 1;
 		}
 
 		for(std::size_t i = 0; i < sizeof(Data) / sizeof(type<int>); ++i)
 		{
-			int Result = mask_loop(Data[i].Value);
+			glm::uint  Result = static_cast<glm::uint>(mask_loop(Data[i].Value));
 			Error += Data[i].Return == Result ? 0 : 1;
 		}
 
 		for(std::size_t i = 0; i < sizeof(Data) / sizeof(type<int>); ++i)
 		{
-			int Result = glm::mask(Data[i].Value);
+			glm::uint  Result = static_cast<glm::uint>(glm::mask(Data[i].Value));
 			Error += Data[i].Return == Result ? 0 : 1;
 		}
 
@@ -686,6 +686,10 @@ namespace bitfieldInterleave5
 			(Result >> 32) & 0x0000FFFF00000000ull,
 			(Result >> 48) & 0xFFFF000000000000ull);
 	}
+
+#if GLM_COMPILER & GLM_COMPILER_VC
+#	pragma warning(disable : 4309)
+#endif
 
 	GLM_FUNC_QUALIFIER glm::uint32 bitfieldInterleave_u16vec2(glm::uint16 x, glm::uint16 y)
 	{

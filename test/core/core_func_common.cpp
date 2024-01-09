@@ -16,6 +16,7 @@
 
 // This file has divisions by zero to test isnan
 #if GLM_COMPILER & GLM_COMPILER_VC
+#	pragma warning(push)
 #	pragma warning(disable : 4723)
 #endif
 
@@ -1347,3 +1348,6 @@ int main()
 	return Error;
 }
 
+#if(GLM_COMPILER & GLM_COMPILER_VC)
+#	pragma warning(pop)
+#endif

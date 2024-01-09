@@ -44,13 +44,13 @@ typedef union
 	do {									\
 		ieee_float_shape_type gf_u;			\
 		gf_u.value = (d);					\
-		(i) = gf_u.word;					\
+		(i) = static_cast<int>(gf_u.word);	\
 	} while (0)
 
 #define GLM_SET_FLOAT_WORD(d,i)				\
 	do {									\
 		ieee_float_shape_type sf_u;			\
-		sf_u.word = (i);					\
+		sf_u.word = static_cast<unsigned int>(i);	\
 		(d) = sf_u.value;					\
 	} while (0)
 

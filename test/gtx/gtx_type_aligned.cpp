@@ -29,11 +29,20 @@ int test_decl()
 			glm::vec3 B;
 		};
 
+#		if GLM_COMPILER & GLM_COMPILER_VC
+#			pragma warning(push)
+#			pragma warning(disable : 4324)
+#		endif
+
 		struct S2
 		{
 			bool A;
 			glm::aligned_vec3 B;
 		};
+
+#		if GLM_COMPILER & GLM_COMPILER_VC
+#			pragma warning(pop)
+#		endif
 
 		std::printf("vec3 - Aligned: %d, unaligned: %d\n", static_cast<int>(sizeof(S1)), static_cast<int>(sizeof(S2)));
 
@@ -41,11 +50,20 @@ int test_decl()
 	}
 
 	{
+#		if GLM_COMPILER & GLM_COMPILER_VC
+#			pragma warning(push)
+#			pragma warning(disable : 4324)
+#		endif
+
 		struct S1
 		{
 			bool A;
 			glm::aligned_vec4 B;
 		};
+
+#		if GLM_COMPILER & GLM_COMPILER_VC
+#			pragma warning(pop)
+#		endif
 
 		struct S2
 		{
@@ -59,11 +77,20 @@ int test_decl()
 	}
 
 	{
+#		if GLM_COMPILER & GLM_COMPILER_VC
+#			pragma warning(push)
+#			pragma warning(disable : 4324)
+#		endif
+
 		struct S1
 		{
 			bool A;
 			glm::aligned_dvec4 B;
 		};
+
+#		if GLM_COMPILER & GLM_COMPILER_VC
+#			pragma warning(pop)
+#		endif
 
 		struct S2
 		{
